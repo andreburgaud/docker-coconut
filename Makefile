@@ -13,7 +13,7 @@ help:
 	@echo
 
 build:
-	docker build --build-arg SSLYZE_VERSION=${TAG} -t ${IMAGE}:${TAG} .
+	docker build --build-arg COCONUT_VERSION=${TAG} -t ${IMAGE}:${TAG} .
 
 clean:
 	# Remove containers with exited status:
