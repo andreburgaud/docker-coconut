@@ -1,7 +1,6 @@
-FROM python:3.7.2-slim-stretch
+FROM python:3.8.2-slim-buster
 
-ARG COCONUT_VERSION=1.4.0
-ENV COCONUT_VERSION=$COCONUT_VERSION
+ENV COCONUT_VERSION=1.4.3
 
 LABEL coconut.version=$COCONUT_VERSION \
       maintainer="andre.burgaud@gmail.com"

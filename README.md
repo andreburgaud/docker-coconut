@@ -35,18 +35,18 @@ Coconut Interpreter:
 
 # Run Coconut shell with specific options
 
-* `--target 36`: support for the latest Python 3 syntax such as `f-string`.
+* `--target 3.8`: support for the latest Python 3.8 syntax such as assignment expression `:=`.
 
 ```
-$ docker run --rm -it andreburgaud/coconut coconut --target 36
+$ docker run --rm -it andreburgaud/coconut coconut --target 3.8
 Coconut Interpreter:
 (type 'exit()' or press Ctrl-D to end)
 >>> import sys
 >>> from coconut import root
 >>> f'Coconut {root.VERSION_STR}' |> print
-Coconut 1.4.0 [Ernest Scribbler]
+Coconut 1.4.3 [Ernest Scribbler]
 >>> 'Python {}.{}.{}'.format(*sys.version_info[:3]) |> print
-Python 3.7.2
+Python 3.8.2
 >>> exit()
 ```
 
@@ -55,7 +55,7 @@ Python 3.7.2
 Notebooks will appears in the host current directory (`/notebooks` in the container)
 
 ```
-$ docker run -it --rm -v`pwd`:/notebooks -p 8888:8888 andreburgaud/coconut coconut --target 36 --jupyter notebook --ip 0.0.0.0 --no-browser
+$ docker run -it --rm -v`pwd`:/notebooks -p 8888:8888 andreburgaud/coconut coconut --target 3.8 --jupyter notebook --ip 0.0.0.0 --no-browser
 Coconut: Successfully installed Coconut Jupyter kernel.
 [I 04:37:23.521 NotebookApp] Writing notebook server cookie secret to /home/jupyter/.local/share/jupyter/runtime/notebook_cookie_secret
 [I 04:37:23.730 NotebookApp] Serving notebooks from local directory: /notebooks

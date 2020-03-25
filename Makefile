@@ -1,19 +1,10 @@
-TAG:=${IMAGE_TAG}
+TAG:=1.4.3
 IMAGE:=andreburgaud/coconut
 
 default: help
 
-help:
-	@echo 'Coconut ${TAG} Docker image build file'
-	@echo
-	@echo 'Usage:'
-	@echo '    make clean           Delete dangling and Coconut images'
-	@echo '    make build           Build the Coconut image using local Dockerfile'
-	@echo '    make github          Push code and tag to GitHub'
-	@echo
-
 build:
-	docker build --build-arg COCONUT_VERSION=${TAG} -t ${IMAGE}:${TAG} .
+	docker build -t ${IMAGE}:${TAG} .
 
 clean:
 	# Remove containers with exited status:
@@ -23,9 +14,18 @@ clean:
 	# Delete dangling images
 	docker rmi `docker images -f dangling=true -q` || true
 
-github:
+help:
+	@echo 'Coconut ${TAG} Docker image build file'
+	@echo
+	@echo 'Usage:'
+	@echo '    make build     Build the Coconut image using local Dockerfile'
+	@echo '    make clean     Delete dangling and Coconut images'
+	@echo '    make tag       Push code and tag to GitHub'
+	@echo
+
+tag:
 	git push
 	git tag -a ${TAG} -m 'Version ${TAG}'
 	git push origin --tags
 
-.PHONY: help build clean github
+.PHONY: build clean help tag
